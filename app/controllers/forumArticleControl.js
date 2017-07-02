@@ -8,7 +8,7 @@ var express = require('express'),
     _ = require('lodash'),
 
 //引入需要的数据服务
-var demoService = require('../service/demoService');
+var forumArticleService = require('../service/forumArticleService');
 
 //返回router给app使用
 module.exports = function(app) {
@@ -19,7 +19,7 @@ module.exports = function(app) {
 //定义路由
 router.post('/article', function(req, res, next) {
 	var article = req.body;
-	demoService.createArticle(article, function(err, result) {
+	forumArticleService.createArticle(article, function(err, result) {
 		if (err) {
             res.json(err);
         } else {
@@ -29,7 +29,7 @@ router.post('/article', function(req, res, next) {
 });
 
 router.get('/article/:id', function(req, res, next) {
-	demoService.getArticle(req.params.id, function(err, result) {
+	forumArticleService.getArticle(req.params.id, function(err, result) {
 		if(err){
 			res.json(err);
 		}else {
